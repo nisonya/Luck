@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "872113546909",
+    "project_id": "ululuu-f21b6",
+    "storage_bucket": "ululuu-f21b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872113546909:android:762fae8e67a27ba83d5674",
+        "android_client_info": {
+          "package_name": "luck.luckbet.game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872113546909-eq6u11evdehs8uq5r1238edv6v6kefm9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMjfpMwXppu1SeGcfGgnTB6mGzs__u1qk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "872113546909-eq6u11evdehs8uq5r1238edv6v6kefm9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
