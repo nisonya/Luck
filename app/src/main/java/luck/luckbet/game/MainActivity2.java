@@ -37,6 +37,9 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 import luck.luckbet.game.databinding.ActivityMain2Binding;
@@ -44,8 +47,10 @@ import luck.luckbet.game.databinding.ActivityMain2Binding;
 public class MainActivity2 extends AppCompatActivity {
 
     ActivityMain2Binding binding;
-    private String[] words ={"sport","coach","start", "rugby","darts","arrow","arena", "boxer","batter","cycle","catch",
-    "field","loser","medal","ollie","pitch","racer","skate","score","throw","vault"};
+    /*private String[] words ={"sport","coach","start", "rugby","darts","arrow","arena", "boxer","batter","cycle","catch",
+    "field","loser","medal","ollie","pitch","racer","skate","score","throw","vault"};*/
+    private List<String> words = Arrays.asList("sport","coach","start", "rugby","darts","arrow","arena", "boxer","batter","cycle","catch",
+            "field","loser","medal","ollie","pitch","racer","skate","score","throw","vault");
     private int wordIndex=0;
     public boolean to;
     private static final String FILE_NAME="MY_FILE_NAME";
@@ -256,6 +261,7 @@ public class MainActivity2 extends AppCompatActivity {
     public void plug(){
         binding = ActivityMain2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Collections.shuffle(words);
         passFocus(binding.ED11,binding.ED12);
         passFocus(binding.ED12,binding.ED13);
         passFocus(binding.ED13,binding.ED14);
@@ -286,6 +292,11 @@ public class MainActivity2 extends AppCompatActivity {
         passFocus(binding.ED63,binding.ED64);
         passFocus(binding.ED64,binding.ED65);
         lastLetter(binding.ED15,binding.ED14,binding.ED13,binding.ED12, binding.ED11);
+        lastLetter(binding.ED25,binding.ED24,binding.ED23,binding.ED22, binding.ED21);
+        lastLetter(binding.ED35,binding.ED34,binding.ED33,binding.ED32, binding.ED31);
+        lastLetter(binding.ED45,binding.ED44,binding.ED43,binding.ED42, binding.ED41);
+        lastLetter(binding.ED55,binding.ED54,binding.ED53,binding.ED52, binding.ED51);
+        lastLetter(binding.ED65,binding.ED64,binding.ED63,binding.ED62, binding.ED61);
     }
     //сохранение ссылки локально
     public void saveToSP(){
@@ -330,7 +341,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     }
     private void checkRow(EditText edt1,EditText edt2,EditText edt3,EditText edt4,EditText edt5){
-        word = words[wordIndex];
+        word = words.get(wordIndex);
         System.out.println(word+"!!!!!!!!!");
         setColors(edt1,0);
         setColors(edt2,1);
