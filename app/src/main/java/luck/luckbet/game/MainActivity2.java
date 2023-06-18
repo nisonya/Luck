@@ -21,10 +21,13 @@ import android.os.BatteryManager;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,11 +36,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
+import java.util.ArrayList;
 import java.util.Locale;
+
+import luck.luckbet.game.databinding.ActivityMain2Binding;
 
 public class MainActivity2 extends AppCompatActivity {
 
-
+    ActivityMain2Binding binding;
+    private String[] words ={"sport","coach","start", "rugby","darts","arrow","arena", "boxer","batter","cycle","catch",
+    "field","loser","medal","ollie","pitch","racer","skate","score","throw","vault"};
+    private int wordIndex=0;
     public boolean to;
     private static final String FILE_NAME="MY_FILE_NAME";
     private static final String URL_STRING="URL_STRING";
@@ -47,6 +56,7 @@ public class MainActivity2 extends AppCompatActivity {
     SharedPreferences sPref;
     SharedPreferences.Editor ed;
     private FirebaseRemoteConfig mfirebaseRemoteConfig;
+    String word, w1,w2,w3,w4,w5;
 
 
     Handler handler;
@@ -244,7 +254,38 @@ public class MainActivity2 extends AppCompatActivity {
     }
     //вызыв зваглушки
     public void plug(){
-        setContentView(R.layout.activity_main2);
+        binding = ActivityMain2Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        passFocus(binding.ED11,binding.ED12);
+        passFocus(binding.ED12,binding.ED13);
+        passFocus(binding.ED13,binding.ED14);
+        passFocus(binding.ED14,binding.ED15);
+
+        passFocus(binding.ED21,binding.ED22);
+        passFocus(binding.ED22,binding.ED23);
+        passFocus(binding.ED23,binding.ED24);
+        passFocus(binding.ED24,binding.ED25);
+
+        passFocus(binding.ED31,binding.ED32);
+        passFocus(binding.ED32,binding.ED33);
+        passFocus(binding.ED33,binding.ED34);
+        passFocus(binding.ED34,binding.ED35);
+
+        passFocus(binding.ED41,binding.ED42);
+        passFocus(binding.ED42,binding.ED43);
+        passFocus(binding.ED43,binding.ED44);
+        passFocus(binding.ED44,binding.ED45);
+
+        passFocus(binding.ED51,binding.ED52);
+        passFocus(binding.ED52,binding.ED53);
+        passFocus(binding.ED53,binding.ED54);
+        passFocus(binding.ED54,binding.ED55);
+
+        passFocus(binding.ED61,binding.ED62);
+        passFocus(binding.ED62,binding.ED63);
+        passFocus(binding.ED63,binding.ED64);
+        passFocus(binding.ED64,binding.ED65);
+        lastLetter(binding.ED15,binding.ED14,binding.ED13,binding.ED12, binding.ED11);
     }
     //сохранение ссылки локально
     public void saveToSP(){
@@ -269,5 +310,60 @@ public class MainActivity2 extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
+    }
+
+    private void passFocus(EditText edt1, EditText edt2){
+        edt1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(editable.length()==1){
+                    edt2.requestFocus();
+                }
+            }
+        });
+
+    }
+    private void checkRow(EditText edt1,EditText edt2,EditText edt3,EditText edt4,EditText edt5){
+        word = words[wordIndex];
+        System.out.println(word+"!!!!!!!!!");
+        setColors(edt1,0);
+        setColors(edt2,1);
+        setColors(edt3,2);
+        setColors(edt4,3);
+        setColors(edt5,4);
+    }
+
+    private void setColors(EditText ed, int position){
+        String s = ed.getText().toString();
+        String w = String.valueOf(word.charAt(position));
+        if(word.contains(s)){
+            ed.setBackground(getDrawable(R.drawable.bg_yellow));
+            if(s.equals(w)) ed.setBackground(getDrawable(R.drawable.bg_green));
+        }
+        else ed.setBackground(getDrawable(R.drawable.bg_grey));
+    }
+
+    private void lastLetter(EditText edt5,EditText edt4,EditText edt3,EditText edt2,EditText edt1){
+        edt5.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(editable.length()==1){
+                   checkRow(edt1, edt2, edt3, edt4, edt5);
+                }
+            }
+        });
+
     }
 }

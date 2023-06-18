@@ -37,13 +37,13 @@
             android:textSize="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The letter E is in the word and in a correct place" />
+            android:text="The letter T is in the word and in a correct place" />
 
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            app:srcCompat="@drawable/photo1" />
 
         <TextView
             android:id="@+id/textView3"
@@ -52,13 +52,13 @@
             android:textSize="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The letter T is in the word but in the wrong spot" />
+            android:text="The letter O is in the word but in the wrong spot" />
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            app:srcCompat="@drawable/photo2" />
 
         <TextView
             android:id="@+id/textView4"
@@ -66,14 +66,14 @@
             android:layout_marginBottom="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The letter K is not in the word in any spot" />
+            android:text="The letter A is not in the word in any spot" />
 
         <ImageView
             android:id="@+id/imageView6"
             android:textSize="16dp"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            app:srcCompat="@drawable/photo3" />
 
         <Button
             android:id="@+id/okey_btn"
