@@ -113,14 +113,15 @@
 
             <EditText
                 android:id="@+id/ED_22"
-                android:maxLength="1"
-                android:gravity="center"
-                android:textSize="30sp"
-                android:textStyle="bold"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="4dp"
-                android:background="@drawable/bg_edit" />
+                android:background="@drawable/bg_edit"
+                android:gravity="center"
+                android:maxLength="1"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
                 android:id="@+id/ED_23"
@@ -208,14 +209,15 @@
 
             <EditText
                 android:id="@+id/ED_35"
-                android:maxLength="1"
-                android:gravity="center"
-                android:textSize="30sp"
-                android:textStyle="bold"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="4dp"
-                android:background="@drawable/bg_edit" />
+                android:background="@drawable/bg_edit"
+                android:gravity="center"
+                android:maxLength="1"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
 
@@ -227,13 +229,14 @@
 
             <EditText
                 android:id="@+id/ED_41"
-                android:maxLength="1"
-                android:gravity="center"
-                android:textSize="30sp"
-                android:textStyle="bold"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/bg_edit" />
+                android:background="@drawable/bg_edit"
+                android:gravity="center"
+                android:maxLength="1"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
                 android:id="@+id/ED_42"
@@ -348,15 +351,16 @@
         android:layout_marginTop="4dp"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/ED_61"
-            android:maxLength="1"
-            android:gravity="center"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/bg_edit" />
+            <EditText
+                android:id="@+id/ED_61"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_edit"
+                android:gravity="center"
+                android:maxLength="1"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
             android:id="@+id/ED_62"
@@ -407,7 +411,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/winTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -418,5 +422,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.261" />
+
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEXT"
+        android:onClick="nextWord"
+        android:backgroundTint ="@color/yellow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/winTxt" />
 </androidx.constraintlayout.widget.ConstraintLayout>

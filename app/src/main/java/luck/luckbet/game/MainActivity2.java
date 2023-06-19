@@ -47,10 +47,9 @@ import luck.luckbet.game.databinding.ActivityMain2Binding;
 public class MainActivity2 extends AppCompatActivity {
 
     ActivityMain2Binding binding;
-    /*private String[] words ={"sport","coach","start", "rugby","darts","arrow","arena", "boxer","batter","cycle","catch",
-    "field","loser","medal","ollie","pitch","racer","skate","score","throw","vault"};*/
+    private List<EditText> editTexts=new ArrayList<>();
     private List<String> words = Arrays.asList("sport","coach","start", "rugby","darts","arrow","arena", "boxer","batter","cycle","catch",
-            "field","loser","medal","ollie","pitch","racer","skate","score","throw","vault");
+            "field","loser","medal","ollie","pitch","racer","skate","score","throw","rules");
     private int wordIndex=0;
     public boolean to;
     private static final String FILE_NAME="MY_FILE_NAME";
@@ -61,11 +60,8 @@ public class MainActivity2 extends AppCompatActivity {
     SharedPreferences sPref;
     SharedPreferences.Editor ed;
     private FirebaseRemoteConfig mfirebaseRemoteConfig;
-    String word, w1,w2,w3,w4,w5;
+    String word, userWord;
 
-
-    Handler handler;
-    Runnable runnable;
 
 
 
@@ -262,6 +258,12 @@ public class MainActivity2 extends AppCompatActivity {
         binding = ActivityMain2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Collections.shuffle(words);
+        editTexts=Arrays.asList(binding.ED11, binding.ED12, binding.ED13,binding.ED14, binding.ED15,
+                binding.ED21, binding.ED22, binding.ED23,binding.ED24, binding.ED25,
+                binding.ED31, binding.ED32, binding.ED33,binding.ED34, binding.ED35,
+                binding.ED41, binding.ED42, binding.ED43,binding.ED44, binding.ED45,
+                binding.ED51, binding.ED52, binding.ED53,binding.ED54, binding.ED55,
+                binding.ED61, binding.ED62, binding.ED63,binding.ED64, binding.ED65);
         passFocus(binding.ED11,binding.ED12);
         passFocus(binding.ED12,binding.ED13);
         passFocus(binding.ED13,binding.ED14);
@@ -341,6 +343,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     }
     private void checkRow(EditText edt1,EditText edt2,EditText edt3,EditText edt4,EditText edt5){
+        userWord="";
         word = words.get(wordIndex);
         System.out.println(word+"!!!!!!!!!");
         setColors(edt1,0);
@@ -348,10 +351,17 @@ public class MainActivity2 extends AppCompatActivity {
         setColors(edt3,2);
         setColors(edt4,3);
         setColors(edt5,4);
+        if(userWord.equals(word)){
+            binding.winTxt.setVisibility(View.VISIBLE);
+            for(int i =0; i<editTexts.size();i++){
+                editTexts.get(i).setEnabled(false);
+            }
+        }
     }
 
     private void setColors(EditText ed, int position){
-        String s = ed.getText().toString();
+        String s = ed.getText().toString().toLowerCase();
+        userWord = userWord+s;
         String w = String.valueOf(word.charAt(position));
         if(word.contains(s)){
             ed.setBackground(getDrawable(R.drawable.bg_yellow));
@@ -376,5 +386,18 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void nextWord(View view) {
+
+        binding.winTxt.setVisibility(View.INVISIBLE);
+        for(int i =0; i<editTexts.size();i++){
+            editTexts.get(i).setText("");
+            editTexts.get(i).setEnabled(true);
+            editTexts.get(i).setBackground(getDrawable(R.drawable.bg_edit));
+            editTexts.get(i).clearFocus();
+        }
+        if(wordIndex<words.size()) wordIndex++;
+        else wordIndex=0;
     }
 }
